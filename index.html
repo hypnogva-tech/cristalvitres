@@ -244,7 +244,7 @@
     btn.textContent = 'Redirection...';
     btn.classList.add('loading');
     try {
-      const res = await fetch('/.netlify/functions/create-checkout', {
+      const res = await fetch('/api/create-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ total, description: 'Cristal Vitres — Nettoyage ' + total + ' CHF' })
