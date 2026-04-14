@@ -4,11 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cristal Vitres — Nettoyage professionnel Suisse romande</title>
-<script src="https://js.stripe.com/v3/"></script>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8f7f4; color: #1a1a1a; }
-
+ 
   .hero { background: #1a1a1a; color: white; padding: 60px 24px 48px; text-align: center; }
   .hero-tag { display: inline-block; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #90d4a8; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 24px; }
   .hero h1 { font-size: clamp(32px, 6vw, 56px); font-weight: 300; line-height: 1.1; margin-bottom: 16px; }
@@ -16,13 +15,22 @@
   .hero p { color: rgba(255,255,255,0.5); font-size: 15px; max-width: 400px; margin: 0 auto 32px; line-height: 1.6; }
   .badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
   .badge { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); font-size: 12px; padding: 8px 16px; border-radius: 100px; }
-
+ 
   .main { max-width: 520px; margin: 0 auto; padding: 32px 16px 60px; }
-
+ 
+  .steps { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 28px; }
+  .step-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #999; }
+  .step-item.active { color: #2c6e49; font-weight: 600; }
+  .step-item.done { color: #2c6e49; }
+  .step-num { width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid #ddd; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; }
+  .step-item.active .step-num { background: #2c6e49; border-color: #2c6e49; color: white; }
+  .step-item.done .step-num { background: #2c6e49; border-color: #2c6e49; color: white; }
+  .step-divider { width: 24px; height: 1px; background: #ddd; }
+ 
   .card { background: white; border-radius: 20px; padding: 28px; margin-bottom: 16px; border: 1px solid #eee; }
   .card-title { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
   .card-sub { font-size: 13px; color: #888; margin-bottom: 24px; }
-
+ 
   .counter-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid #f0f0f0; }
   .counter-row:last-child { border-bottom: none; }
   .counter-info { flex: 1; }
@@ -32,45 +40,60 @@
   .btn-counter { width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid #ddd; background: white; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #333; transition: all 0.15s; line-height: 1; }
   .btn-counter:hover { border-color: #2c6e49; color: #2c6e49; background: #eaf2ed; }
   .counter-val { font-size: 16px; font-weight: 600; min-width: 20px; text-align: center; }
-
-  .price-box { background: #1a1a1a; border-radius: 16px; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; margin: 20px 0; }
+ 
+  .price-box { background: #1a1a1a; border-radius: 16px; padding: 20px 24px; margin: 20px 0; }
   .price-label { font-size: 12px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
   .price-amount { font-size: 40px; font-weight: 300; color: white; }
   .price-amount span { font-size: 16px; color: rgba(255,255,255,0.4); margin-left: 4px; }
   .price-empty { font-size: 14px; color: rgba(255,255,255,0.3); font-style: italic; }
-
+ 
+  .btn-main { width: 100%; padding: 18px; background: #2c6e49; color: white; border: none; border-radius: 14px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  .btn-main:hover:not(:disabled) { background: #245a3c; transform: translateY(-1px); }
+  .btn-main:disabled { background: #ddd; color: #999; cursor: not-allowed; transform: none; }
+ 
+  .calendly-wrap { border-radius: 12px; overflow: hidden; border: 1px solid #eee; }
+  .calendly-wrap iframe { display: block; width: 100%; }
+ 
+  .price-summary { background: #f8f7f4; border-radius: 12px; padding: 16px 20px; margin-bottom: 20px; }
+  .price-summary-label { font-size: 12px; color: #888; margin-bottom: 4px; }
+  .price-summary-amount { font-size: 32px; font-weight: 300; color: #1a1a1a; }
+  .price-summary-amount span { font-size: 14px; color: #888; margin-left: 4px; }
+  .price-summary-detail { font-size: 12px; color: #999; margin-top: 4px; }
+ 
   .btn-pay { width: 100%; padding: 18px; background: #2c6e49; color: white; border: none; border-radius: 14px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
-  .btn-pay:hover:not(:disabled) { background: #245a3c; transform: translateY(-1px); }
-  .btn-pay:disabled { background: #ddd; color: #999; cursor: not-allowed; transform: none; }
-  .btn-pay.loading { background: #245a3c; opacity: 0.7; }
-
+  .btn-pay:hover { background: #245a3c; transform: translateY(-1px); }
+  .btn-pay.loading { opacity: 0.7; cursor: not-allowed; }
+ 
   .guarantee { text-align: center; font-size: 12px; color: #999; margin-top: 10px; }
-
-  .calendly-section { margin-top: 8px; }
-  .calendly-section iframe { border-radius: 12px; border: 1px solid #eee; width: 100%; }
-
+ 
   .reviews { display: grid; gap: 12px; }
   .review { background: white; border-radius: 16px; padding: 20px; border: 1px solid #eee; }
   .stars { color: #f59e0b; font-size: 13px; letter-spacing: 2px; margin-bottom: 10px; }
   .review-text { font-size: 13px; color: #555; line-height: 1.6; font-style: italic; margin-bottom: 14px; }
   .review-author { font-size: 12px; font-weight: 600; color: #333; }
   .review-loc { font-size: 11px; color: #999; }
-
+ 
   .cgv { background: white; border-radius: 20px; padding: 28px; margin-top: 16px; border: 1px solid #eee; }
   .cgv h2 { font-size: 16px; font-weight: 600; margin-bottom: 20px; }
   .cgv h3 { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #666; margin: 16px 0 6px; }
   .cgv p { font-size: 12px; color: #888; line-height: 1.7; }
-
+ 
+  .contact-bar { background: #f0f7f3; border-top: 1px solid #c8e6d4; padding: 28px 24px; text-align: center; }
+  .contact-bar a { display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: white; padding: 12px 24px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; margin-top: 12px; }
+ 
   footer { background: #1a1a1a; color: rgba(255,255,255,0.3); text-align: center; padding: 24px; font-size: 12px; }
-
+ 
   .success-banner { background: #eaf2ed; border: 1px solid #2c6e49; color: #2c6e49; padding: 16px 20px; border-radius: 12px; margin-bottom: 16px; font-size: 14px; font-weight: 500; text-align: center; display: none; }
+ 
+  .section { display: none; }
+  .section.active { display: block; }
 </style>
 </head>
 <body>
-
+ 
 <div class="hero">
-  <div class="hero-tag">Disponible dans votre quartier</div>
-  <h1>Vos vitres,<br><em>impeccables</em><br>en 90 minutes.</h1>
+  <div class="hero-tag">Disponible dans votre quartier — durée limitée</div>
+  <h1>Vos vitres,<br><em>impeccables</em><br>sans effort.</h1>
   <p>Service professionnel en Suisse romande. Prix fixe, réservation en ligne, satisfaction garantie.</p>
   <div class="badges">
     <span class="badge">🛡 Assuré RC professionnelle</span>
@@ -78,88 +101,124 @@
     <span class="badge">🔒 Paiement sécurisé Stripe</span>
   </div>
 </div>
-
+ 
 <div class="main">
-
+ 
   <div class="success-banner" id="success-banner">
     ✅ Paiement réussi — merci ! Votre réservation est confirmée.
   </div>
-
-  <!-- CALCULATOR -->
-  <div class="card">
-    <div class="card-title">Estimez votre prix</div>
-    <div class="card-sub">Indiquez vos fenêtres — le prix s'affiche instantanément.</div>
-
-    <div class="counter-row">
-      <div class="counter-info">
-        <div class="counter-name">Petite fenêtre</div>
-        <div class="counter-price">15 CHF / unité</div>
-      </div>
-      <div class="counter-controls">
-        <button class="btn-counter" onclick="change('small', -1)">−</button>
-        <span class="counter-val" id="val-small">0</span>
-        <button class="btn-counter" onclick="change('small', 1)">+</button>
-      </div>
+ 
+  <div class="steps">
+    <div class="step-item active" id="step1-indicator">
+      <div class="step-num">1</div>
+      <span>Estimation</span>
     </div>
-
-    <div class="counter-row">
-      <div class="counter-info">
-        <div class="counter-name">Fenêtre standard</div>
-        <div class="counter-price">20 CHF / unité</div>
-      </div>
-      <div class="counter-controls">
-        <button class="btn-counter" onclick="change('standard', -1)">−</button>
-        <span class="counter-val" id="val-standard">0</span>
-        <button class="btn-counter" onclick="change('standard', 1)">+</button>
-      </div>
+    <div class="step-divider"></div>
+    <div class="step-item" id="step2-indicator">
+      <div class="step-num">2</div>
+      <span>Créneau</span>
     </div>
-
-    <div class="counter-row">
-      <div class="counter-info">
-        <div class="counter-name">Porte-fenêtre</div>
-        <div class="counter-price">30 CHF / unité</div>
-      </div>
-      <div class="counter-controls">
-        <button class="btn-counter" onclick="change('large', -1)">−</button>
-        <span class="counter-val" id="val-large">0</span>
-        <button class="btn-counter" onclick="change('large', 1)">+</button>
-      </div>
+    <div class="step-divider"></div>
+    <div class="step-item" id="step3-indicator">
+      <div class="step-num">3</div>
+      <span>Paiement</span>
     </div>
-
-    <div class="counter-row">
-      <div class="counter-info">
-        <div class="counter-name">Grande baie vitrée</div>
-        <div class="counter-price">45 CHF / unité</div>
+  </div>
+ 
+  <!-- STEP 1 : CALCULATOR -->
+  <div class="section active" id="step1">
+    <div class="card">
+      <div class="card-title">Estimez votre prix</div>
+      <div class="card-sub">Indiquez vos fenêtres — le prix s'affiche instantanément.</div>
+ 
+      <div class="counter-row">
+        <div class="counter-info">
+          <div class="counter-name">Fenêtre standard</div>
+          <div class="counter-price">15 CHF / unité</div>
+        </div>
+        <div class="counter-controls">
+          <button class="btn-counter" onclick="change('standard', -1)">−</button>
+          <span class="counter-val" id="val-standard">0</span>
+          <button class="btn-counter" onclick="change('standard', 1)">+</button>
+        </div>
       </div>
-      <div class="counter-controls">
-        <button class="btn-counter" onclick="change('panoramic', -1)">−</button>
-        <span class="counter-val" id="val-panoramic">0</span>
-        <button class="btn-counter" onclick="change('panoramic', 1)">+</button>
+ 
+      <div class="counter-row">
+        <div class="counter-info">
+          <div class="counter-name">Porte-fenêtre</div>
+          <div class="counter-price">30 CHF / unité</div>
+        </div>
+        <div class="counter-controls">
+          <button class="btn-counter" onclick="change('large', -1)">−</button>
+          <span class="counter-val" id="val-large">0</span>
+          <button class="btn-counter" onclick="change('large', 1)">+</button>
+        </div>
       </div>
-    </div>
-
-    <div class="price-box">
-      <div>
+ 
+      <div class="counter-row">
+        <div class="counter-info">
+          <div class="counter-name">Grande baie vitrée</div>
+          <div class="counter-price">45 CHF / unité</div>
+        </div>
+        <div class="counter-controls">
+          <button class="btn-counter" onclick="change('panoramic', -1)">−</button>
+          <span class="counter-val" id="val-panoramic">0</span>
+          <button class="btn-counter" onclick="change('panoramic', 1)">+</button>
+        </div>
+      </div>
+ 
+      <div class="price-box">
         <div class="price-label">Votre estimation</div>
         <div id="price-display"><div class="price-empty">Sélectionnez vos fenêtres</div></div>
       </div>
+ 
+      <button class="btn-main" id="btn-step1" onclick="goToStep2()" disabled>
+        Choisir mon créneau →
+      </button>
     </div>
-
-    <button class="btn-pay" id="pay-btn" onclick="pay()" disabled>
-      Réserver et payer maintenant
-    </button>
-    <div class="guarantee">🔒 Paiement sécurisé · Annulation gratuite 24h avant</div>
   </div>
-
-  <!-- CALENDLY -->
-  <div class="card calendly-section">
-    <div class="card-title">Choisissez votre créneau</div>
-    <div class="card-sub">Sélectionnez une date et une heure disponibles.</div>
-    <iframe src="https://calendly.com/lesambitieuxacomplis/cristal-fenetres" height="600" frameborder="0"></iframe>
+ 
+  <!-- STEP 2 : CALENDLY -->
+  <div class="section" id="step2">
+    <div class="card">
+      <div class="card-title">Choisissez votre créneau</div>
+      <div class="card-sub">Sélectionnez une date et une heure disponibles.</div>
+      <div class="calendly-wrap">
+        <iframe src="https://calendly.com/lesambitieuxacomplis/cristal-fenetres" height="600" frameborder="0"></iframe>
+      </div>
+      <div style="margin-top:16px">
+        <button class="btn-main" onclick="goToStep3()" style="background:#1a1a1a">
+          J'ai choisi mon créneau → Passer au paiement
+        </button>
+      </div>
+    </div>
   </div>
-
+ 
+  <!-- STEP 3 : PAYMENT -->
+  <div class="section" id="step3">
+    <div class="card">
+      <div class="card-title">Confirmez et payez</div>
+      <div class="card-sub">Votre créneau est réservé. Finalisez votre commande.</div>
+ 
+      <div class="price-summary">
+        <div class="price-summary-label">Montant à régler</div>
+        <div class="price-summary-amount" id="payment-amount">— <span>CHF</span></div>
+        <div class="price-summary-detail" id="payment-detail"></div>
+      </div>
+ 
+      <button class="btn-pay" id="pay-btn" onclick="pay()">
+        🔒 Payer maintenant
+      </button>
+      <div class="guarantee">Paiement sécurisé par Stripe · Aucun remboursement — report possible par WhatsApp</div>
+ 
+      <div style="margin-top:16px">
+        <button onclick="goToStep2()" style="background:none;border:none;color:#888;font-size:13px;cursor:pointer;text-decoration:underline;">← Modifier mon créneau</button>
+      </div>
+    </div>
+  </div>
+ 
   <!-- REVIEWS -->
-  <div class="card">
+  <div class="card" style="margin-top:8px">
     <div class="card-title" style="margin-bottom:20px">Ils nous font confiance</div>
     <div class="reviews">
       <div class="review">
@@ -182,63 +241,106 @@
       </div>
     </div>
   </div>
-
+ 
   <!-- CGV -->
   <div class="cgv">
     <h2>Conditions générales de vente</h2>
     <h3>1. Objet</h3>
-    <p>Les présentes CGV régissent les relations entre Cristal Vitres et tout client souhaitant bénéficier d'une prestation de nettoyage de vitres.</p>
+    <p>Les présentes CGV régissent les relations entre Cristal Vitres et tout client souhaitant bénéficier d'une prestation de nettoyage de vitres en Suisse romande.</p>
     <h3>2. Tarifs</h3>
-    <p>Les tarifs sont en CHF, TVA incluse. Le prix final est calculé selon le type et le nombre de fenêtres indiqués lors de la réservation.</p>
+    <p>Les tarifs sont exprimés en francs suisses (CHF), TVA incluse. Le prix final est calculé selon le type et le nombre de fenêtres indiqués lors de la réservation.</p>
     <h3>3. Paiement</h3>
     <p>La réservation est confirmée uniquement après réception du paiement intégral via Stripe. Aucune réservation n'est ferme sans paiement préalable.</p>
-    <h3>4. Annulation</h3>
-    <p>Annulation possible gratuitement jusqu'à 24h avant l'intervention. Passé ce délai, aucun remboursement sauf cas de force majeure.</p>
+    <h3>4. Annulation et report</h3>
+    <p>Toute réservation confirmée et payée est ferme et définitive. Aucun remboursement ne sera accordé en cas d'annulation de la part du client. En cas d'empêchement, un report unique de l'intervention peut être demandé au minimum 24h avant la date prévue, par message WhatsApp au +41 78 320 66 10. Le report est accordé à la discrétion du prestataire selon les disponibilités.</p>
     <h3>5. Garantie</h3>
-    <p>Si vous n'êtes pas satisfait, je reviens gratuitement dans les 48h pour corriger. Garantie valable pour une intervention corrective par prestation.</p>
+    <p>Si vous n'êtes pas satisfait du résultat, le prestataire s'engage à revenir gratuitement dans les 48h suivant l'intervention pour effectuer les corrections nécessaires.</p>
     <h3>6. Responsabilité</h3>
-    <p>Le prestataire est couvert par une assurance RC professionnelle. Tout dommage doit être signalé dans les 24h suivant la prestation.</p>
+    <p>Le prestataire est couvert par une assurance responsabilité civile professionnelle. Tout dommage constaté doit être signalé dans les 24h suivant la prestation.</p>
     <h3>7. Droit applicable</h3>
-    <p>CGV soumises au droit suisse. Tout litige relève de la juridiction du canton de Vaud.</p>
+    <p>Les présentes CGV sont soumises au droit suisse. Tout litige relève de la juridiction compétente du canton de Vaud, Suisse.</p>
   </div>
-
+ 
 </div>
-
+ 
+<!-- CONTACT BAR -->
+<div class="contact-bar">
+  <div style="font-size:13px;color:#2c6e49;font-weight:600;margin-bottom:6px;">Une question sur votre estimation ?</div>
+  <div style="font-size:14px;color:#1a1a1a;margin-bottom:4px;">Contactez-moi directement — je réponds rapidement.</div>
+  <a href="https://wa.me/41783206610">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp — +41 78 320 66 10
+  </a>
+</div>
+ 
 <footer>© 2025 Cristal Vitres — Suisse romande · Nettoyage de vitres professionnel</footer>
-
+ 
 <script>
-  const prices = { small: 15, standard: 20, large: 30, panoramic: 45 };
-  const qty = { small: 0, standard: 0, large: 0, panoramic: 0 };
-  const stripe = Stripe('pk_live_51TLpYrQYOOwwisKQZUzYX0jjSLzqA6pCvlClAyRsOkBkBvlB5QVyvoZVT1qpqen9njbEWJRVBe0o36mYzjSdvIqa000ay3mMLe');
-
-  // Check success/cancel URL params
+  const prices = { standard: 15, large: 30, panoramic: 45 };
+  const qty = { standard: 0, large: 0, panoramic: 0 };
+  let currentTotal = 0;
+  let currentDetail = '';
+ 
   const params = new URLSearchParams(window.location.search);
   if (params.get('success') === 'true') {
     document.getElementById('success-banner').style.display = 'block';
   }
-
+ 
   function change(type, delta) {
     qty[type] = Math.max(0, qty[type] + delta);
     document.getElementById('val-' + type).textContent = qty[type];
     updatePrice();
   }
-
+ 
   function updatePrice() {
-    const total = Object.entries(qty).reduce((s, [t, n]) => s + n * prices[t], 0);
+    currentTotal = Object.entries(qty).reduce((s, [t, n]) => s + n * prices[t], 0);
+    const parts = [];
+    if (qty.standard > 0) parts.push(qty.standard + '× fenêtre standard');
+    if (qty.large > 0) parts.push(qty.large + '× porte-fenêtre');
+    if (qty.panoramic > 0) parts.push(qty.panoramic + '× baie vitrée');
+    currentDetail = parts.join(', ');
+ 
     const display = document.getElementById('price-display');
-    const btn = document.getElementById('pay-btn');
-    if (total > 0) {
-      display.innerHTML = '<div class="price-amount">' + total + '<span>CHF</span></div>';
+    const btn = document.getElementById('btn-step1');
+    if (currentTotal > 0) {
+      display.innerHTML = '<div class="price-amount">' + currentTotal + '<span>CHF</span></div>';
       btn.disabled = false;
     } else {
       display.innerHTML = '<div class="price-empty">Sélectionnez vos fenêtres</div>';
       btn.disabled = true;
     }
   }
-
+ 
+  function showStep(n) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById('step' + n).classList.add('active');
+    document.querySelectorAll('.step-item').forEach((el, i) => {
+      el.classList.remove('active', 'done');
+      if (i + 1 < n) el.classList.add('done');
+      if (i + 1 === n) el.classList.add('active');
+    });
+    window.scrollTo(0, 0);
+  }
+ 
+  function goToStep2() {
+    if (currentTotal === 0) return;
+    sessionStorage.setItem('cristal_total', currentTotal);
+    sessionStorage.setItem('cristal_detail', currentDetail);
+    showStep(2);
+  }
+ 
+  function goToStep3() {
+    const total = sessionStorage.getItem('cristal_total') || currentTotal;
+    const detail = sessionStorage.getItem('cristal_detail') || currentDetail;
+    document.getElementById('payment-amount').innerHTML = total + ' <span>CHF</span>';
+    document.getElementById('payment-detail').textContent = detail;
+    showStep(3);
+  }
+ 
   async function pay() {
-    const total = Object.entries(qty).reduce((s, [t, n]) => s + n * prices[t], 0);
-    if (total === 0) return;
+    const total = parseInt(sessionStorage.getItem('cristal_total') || currentTotal);
+    const detail = sessionStorage.getItem('cristal_detail') || currentDetail;
+    if (!total) return;
     const btn = document.getElementById('pay-btn');
     btn.disabled = true;
     btn.textContent = 'Redirection...';
@@ -247,7 +349,7 @@
       const res = await fetch('/api/create-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ total, description: 'Cristal Vitres — Nettoyage ' + total + ' CHF' })
+        body: JSON.stringify({ total, description: 'Cristal Vitres — ' + detail })
       });
       const data = await res.json();
       if (data.url) {
@@ -257,7 +359,7 @@
       }
     } catch (e) {
       btn.disabled = false;
-      btn.textContent = 'Réserver et payer maintenant';
+      btn.textContent = '🔒 Payer maintenant';
       btn.classList.remove('loading');
       alert('Erreur de paiement. Veuillez réessayer.');
     }
