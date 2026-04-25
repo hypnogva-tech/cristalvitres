@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session Coaching — Sam David</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','3812816162336172');
+fbq('track','PageView');
+</script>
+<style>
+:root{--gold:#B8860B;--dark:#1a1a2e;--light:#F8F6F0;--light2:#F0EDE4;--text:#2C2C2C;--text-light:#666;--green:#27AE60;--red:#E74C3C;--border:#E8E0D0}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--light);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;line-height:1.15}
+img{max-width:100%;display:block}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(248,246,240,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 32px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--dark)}
+.nav-btn{background:var(--dark);color:#fff;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 22px;text-decoration:none;border-radius:2px;transition:background .2s}
+.nav-btn:hover{background:var(--gold)}
+
+/* HERO */
+.hero{padding:120px 20px 80px;background:linear-gradient(135deg,#FDFAF4 0%,#F0EDE4 100%);text-align:center}
+.hero-inner{max-width:800px;margin:0 auto}
+.pre-h{display:inline-block;background:rgba(184,134,11,.1);border:1px solid rgba(184,134,11,.3);color:var(--gold);font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;padding:7px 18px;margin-bottom:28px;border-radius:2px}
+.hero h1{font-size:clamp(32px,5.5vw,62px);font-weight:700;margin-bottom:20px;color:var(--dark);line-height:1.08}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero-sub{font-size:clamp(15px,1.8vw,18px);color:var(--text-light);line-height:1.75;margin-bottom:36px;max-width:600px;margin-left:auto;margin-right:auto}
+.hero-sub strong{color:var(--text)}
+
+.avatar-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+.avatar-pill{background:#fff;border:1px solid var(--border);padding:10px 20px;font-size:14px;color:var(--text);border-radius:100px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+
+.vsl-wrap{max-width:720px;margin:0 auto 40px;border-radius:8px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15)}
+.vsl-inner{position:relative;padding-bottom:56.25%}
+.vsl-inner iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+
+.price-box{background:#fff;border:2px solid var(--gold);padding:28px 40px;max-width:480px;margin:0 auto 28px;border-radius:8px;box-shadow:0 8px 40px rgba(184,134,11,.1);text-align:center}
+.price-new{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:700;color:var(--dark);line-height:1}
+.price-new span{font-size:28px}
+.price-note{font-size:12px;color:var(--text-light);letter-spacing:1px;text-transform:uppercase;margin-top:6px}
+
+.btn{display:block;background:var(--dark);color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:16px;letter-spacing:2px;text-transform:uppercase;padding:22px 56px;cursor:pointer;border:none;text-decoration:none;transition:all .2s;border-radius:2px;max-width:500px;margin:0 auto;text-align:center}
+.btn:hover{background:var(--gold);transform:translateY(-2px)}
+.btn-light{background:#fff;color:var(--dark)}.btn-light:hover{background:var(--gold);color:#fff}
+.cta-note{font-size:12px;color:var(--text-light);margin-top:12px;text-align:center}
+
+/* PROOF */
+.proof{background:#fff;padding:24px 20px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.proof-inner{max-width:900px;margin:0 auto;display:flex;justify-content:center;align-items:center;gap:48px;flex-wrap:wrap}
+.pi{text-align:center}
+.pi-n{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--dark);line-height:1}
+.pi-l{font-size:11px;color:var(--text-light);letter-spacing:1px;text-transform:uppercase;margin-top:3px}
+.psep{width:1px;height:36px;background:var(--border)}
+
+/* SECTIONS */
+.sec{padding:80px 20px}
+.sn{max-width:820px;margin:0 auto}
+.sm{max-width:700px;margin:0 auto}
+.sw{max-width:1100px;margin:0 auto}
+.bg-white{background:#fff}
+.bg-light{background:var(--light2)}
+.tc{text-align:center}
+.sec h2{font-size:clamp(28px,4.5vw,50px);margin-bottom:14px;color:var(--dark)}
+.sec h2 em{color:var(--gold);font-style:italic}
+.lbl{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:12px}
+.sub{color:var(--text-light);font-size:16px;margin-bottom:40px}
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);max-width:500px;margin:0 auto}
+.cta-sec{padding:60px 20px;text-align:center;background:var(--light2)}
+.cta-sec p{font-size:12px;color:var(--text-light);margin-top:12px}
+
+/* GET */
+.get-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px}
+@media(max-width:700px){.get-grid{grid-template-columns:1fr}}
+.get-card{background:#fff;padding:28px 24px;border-top:3px solid var(--gold);border-radius:0 4px 4px 0;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.get-card .gicon{font-size:28px;margin-bottom:14px}
+.get-card h3{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;margin-bottom:10px;color:var(--dark)}
+.get-card p{font-size:14px;color:var(--text-light);line-height:1.65}
+
+/* SAM */
+.sam-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+@media(max-width:700px){.sam-grid{grid-template-columns:1fr}}
+.sam-photo{border-radius:8px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.1)}
+.sam-photo img{width:100%;display:block}
+.sam-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.stat-card{background:var(--light2);border:1px solid var(--border);padding:18px;text-align:center;border-radius:4px}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--dark);line-height:1}
+.stat-l{font-size:11px;color:var(--text-light);margin-top:4px}
+.superprof-img{border-radius:8px;overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,.06);margin-top:16px}
+.superprof-img img{width:100%;display:block}
+
+/* TESTI */
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px}
+@media(max-width:640px){.tgrid{grid-template-columns:1fr}}
+.tcard{background:#fff;padding:28px 24px;border-top:3px solid var(--gold);border-radius:0 4px 4px 0;box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.tcard .stars{color:var(--gold);font-size:13px;letter-spacing:2px;margin-bottom:12px}
+.tcard .tres{font-size:11px;font-weight:700;color:var(--green);background:rgba(39,174,96,.1);padding:5px 10px;display:inline-block;margin-bottom:12px;border-radius:2px}
+.tcard .ttxt{font-size:14px;color:var(--text);line-height:1.75;font-style:italic;margin-bottom:14px}
+.tcard .tau{font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-weight:600}
+
+/* FAQ */
+.fi{border-bottom:1px solid var(--border);padding:20px 0;cursor:pointer}
+.fq{font-size:16px;font-weight:500;display:flex;justify-content:space-between;gap:20px;color:var(--dark)}
+.ft{color:var(--gold);font-size:22px;font-weight:300;flex-shrink:0;line-height:1.3;transition:transform .25s}
+.fi.open .ft{transform:rotate(45deg)}
+.fa{font-size:14px;color:var(--text-light);line-height:1.75;max-height:0;overflow:hidden;transition:max-height .35s ease,padding .25s}
+.fi.open .fa{max-height:300px;padding-top:12px}
+
+/* CALENDLY */
+.calendly-section{padding:80px 20px;background:#fff}
+.calendly-inner{max-width:900px;margin:0 auto}
+
+/* URGENCY */
+.urg{padding:70px 20px;background:var(--dark);text-align:center}
+.urg h2{font-size:clamp(24px,4vw,44px);max-width:600px;margin:0 auto 16px;color:#fff}
+.urg h2 em{color:var(--gold);font-style:italic}
+.urg p{color:rgba(255,255,255,.6);font-size:16px;max-width:480px;margin:0 auto 36px;line-height:1.7}
+
+/* STICKY */
+.sticky{position:fixed;bottom:0;left:0;right:0;background:rgba(26,26,46,.97);border-top:2px solid var(--gold);backdrop-filter:blur(12px);padding:14px 24px;display:flex;align-items:center;justify-content:center;gap:24px;z-index:999;transform:translateY(100%);transition:transform .4s ease}
+.sticky.show{transform:translateY(0)}
+.sticky p{font-size:14px;color:rgba(255,255,255,.7)}
+.sticky p strong{color:#fff}
+.stn{background:var(--gold);color:#fff;font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:12px 26px;border:none;cursor:pointer;white-space:nowrap;text-decoration:none;border-radius:2px}
+
+footer{padding:28px 20px;border-top:1px solid var(--border);text-align:center;font-size:12px;color:var(--text-light);line-height:2;background:#fff}
+@media(max-width:560px){.sticky{flex-direction:column;gap:10px;padding:16px}.proof-inner{gap:20px}.psep{display:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-logo">Sam David</span>
+  <a href="#calendly" class="nav-btn">Réserver ma session →</a>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="pre-h">Pour les hommes qui ont tout réussi sauf ça</div>
+    <h1>Tu as réussi ta vie pro.<br>Ta vie amoureuse<br><em>c'est une autre histoire.</em></h1>
+    <p class="hero-sub">Que tu sois célibataire, en couple ou que tu veuilles récupérer ton ex — <strong>en 45 minutes je t'explique exactement ce qui bloque et tu repars avec un plan d'action concret.</strong></p>
+
+    <div class="avatar-row">
+      <div class="avatar-pill">💔 Célibataire</div>
+      <div class="avatar-pill">💍 En couple</div>
+      <div class="avatar-pill">🔄 Récupérer son ex</div>
+    </div>
+
+    <div class="vsl-wrap">
+      <div class="vsl-inner">
+        <iframe src="https://www.loom.com/embed/4ecc84191a044041adf5da56e52b6dc3" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="price-box">
+      <div class="price-new">80<span>€</span></div>
+      <div class="price-note">Session unique · 45 minutes · Avec Sam David</div>
+    </div>
+    <a href="#calendly" class="btn">Réserver ma session maintenant →</a>
+    <p class="cta-note">🔒 Paiement sécurisé · Places limitées · Pas un appel de vente</p>
+  </div>
+</section>
+
+<!-- PROOF -->
+<div class="proof">
+  <div class="proof-inner">
+    <div class="pi"><div class="pi-n">400+</div><div class="pi-l">Hommes accompagnés</div></div>
+    <div class="psep"></div>
+    <div class="pi"><div class="pi-n">60</div><div class="pi-l">Témoignages vidéo</div></div>
+    <div class="psep"></div>
+    <div class="pi"><div class="pi-n">4.8★</div><div class="pi-l">Note Superprof</div></div>
+    <div class="psep"></div>
+    <div class="pi"><div class="pi-n">2020</div><div class="pi-l">Depuis</div></div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<!-- CE QUE TU OBTIENS -->
+<section class="sec bg-light">
+  <div class="sn">
+    <span class="lbl tc" style="text-align:center;display:block;margin-bottom:12px">En 45 minutes avec Sam</span>
+    <h2 class="tc" style="margin-bottom:14px">On rentre immédiatement<br><em>dans le vif du sujet.</em></h2>
+    <p class="tc sub">Pas de blabla. Pas de théorie. Des actions concrètes que tu peux mettre en place tout de suite.</p>
+    <div class="get-grid">
+      <div class="get-card">
+        <div class="gicon">🎯</div>
+        <h3>Un diagnostic précis</h3>
+        <p>Sam identifie immédiatement ce qui te bloque dans ta situation spécifique. Pas une réponse générique — un diagnostic personnalisé basé sur ton histoire.</p>
+      </div>
+      <div class="get-card">
+        <div class="gicon">💡</div>
+        <h3>La vraie raison</h3>
+        <p>Tu comprends enfin pourquoi ça ne marche pas dans ta vie amoureuse malgré tout ce que tu as accompli professionnellement.</p>
+      </div>
+      <div class="get-card">
+        <div class="gicon">🚀</div>
+        <h3>Un plan d'action concret</h3>
+        <p>Tu repars avec quelque chose de bien spécifique à faire immédiatement. Pas de la théorie — une action adaptée exactement à ta situation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dv"></div>
+
+<!-- SAM -->
+<section class="sec bg-white">
+  <div class="sn">
+    <span class="lbl tc" style="text-align:center;display:block;margin-bottom:12px">Qui est Sam ?</span>
+    <h2 class="tc" style="margin-bottom:36px">J'ai vécu<br><em>exactement ce que tu vis.</em></h2>
+    <div class="sam-grid">
+      <div>
+        <div class="sam-photo">
+          <img src="../moi.png" alt="Sam David coach séduction" />
+        </div>
+        <div class="superprof-img">
+          <img src="../superprof.png" alt="Note 4.8 Superprof" />
+        </div>
+      </div>
+      <div>
+        <div class="sam-stats">
+          <div class="stat-card"><div class="stat-n">400+</div><div class="stat-l">Hommes accompagnés</div></div>
+          <div class="stat-card"><div class="stat-n">60</div><div class="stat-l">Témoignages vidéo</div></div>
+          <div class="stat-card"><div class="stat-n">4.8★</div><div class="stat-l">Superprof</div></div>
+          <div class="stat-card"><div class="stat-n">2020</div><div class="stat-l">Depuis</div></div>
+        </div>
+        <p style="font-size:15px;color:var(--text-light);line-height:1.8;margin-bottom:16px">Ancien cadre bancaire. Divorcé. J'avais réussi ma carrière mais ma vie amoureuse était un désastre. J'ai passé des années à comprendre pourquoi — et comment tout changer. Depuis 2020 j'accompagne des hommes comme toi.</p>
+        <p style="font-size:15px;color:var(--text-light);line-height:1.8">J'ai passé des heures et des heures d'appels de coaching. Je vois tout de suite ce qui bloque. Et je te dis quoi faire maintenant — pas dans 3 mois.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dv"></div>
+
+<!-- TÉMOIGNAGES -->
+<section class="sec bg-light">
+  <div class="sw">
+    <span class="lbl tc" style="text-align:center;display:block;margin-bottom:12px">Résultats réels</span>
+    <h2 class="tc" style="margin-bottom:40px">Des hommes comme toi<br><em>ont tout changé.</em></h2>
+    <div class="tgrid">
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <div class="tres">→ En couple · Rayonnement naturel</div>
+        <p class="ttxt">"J'ai 45 ans et à mon âge je pensais pas pouvoir encore m'épanouir de la sorte. Une fille m'a envoyé un SMS dans la nuit après un simple échange de regard — sans une seule parole. Tout le monde me dit que je suis solaire."</p>
+        <span class="tau">Greg · 45 ans</span>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <div class="tres">→ De 10 rendez-vous à 2 pour conclure</div>
+        <p class="ttxt">"J'étais très introverti, gentil acquis, le gendre idéal parfait. Je tombais toujours sur des femmes toxiques. Après 2 mois avec Sam : je m'affiche beaucoup plus, j'ai acquis en confiance. Je conclus dès le 2e date."</p>
+        <span class="tau">Nicolas · 44 ans · Ingénieur · Divorcé</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <a href="#calendly" class="btn">Réserver ma session — 80€ →</a>
+  <p>🔒 Paiement sécurisé · 45 minutes · Plan d'action concret garanti</p>
+</div>
+
+<div class="dv"></div>
+
+<!-- FAQ -->
+<section class="sec bg-white">
+  <div class="sm">
+    <span class="lbl tc" style="text-align:center;display:block;margin-bottom:12px">Questions fréquentes</span>
+    <h2 class="tc" style="margin-bottom:36px">Ce que tu te demandes.</h2>
+    <div class="fi">
+      <div class="fq">C'est vraiment pas un appel de vente ? <span class="ft">+</span></div>
+      <div class="fa">Non. Tu paies 80€ pour une vraie session de travail. On rentre immédiatement dans ta situation. Je ne suis pas là pour te vendre quelque chose — je suis là pour te donner de la valeur concrète. Si à la fin tu veux aller plus loin avec moi je t'expliquerai comment. Mais ce n'est absolument pas l'objectif.</div>
+    </div>
+    <div class="fi">
+      <div class="fq">Comment se passe concrètement la session ? <span class="ft">+</span></div>
+      <div class="fa">Tu réserves un créneau et tu paies 80€. À l'heure du rendez-vous on se connecte en visio. Tu m'expliques ta situation. Je vois immédiatement ce qui bloque et je te dis quoi faire maintenant. Tu repars avec une action concrète spécifique. 45 minutes chrono.</div>
+    </div>
+    <div class="fi">
+      <div class="fq">Tu travailles avec des hommes dans quelle situation ? <span class="ft">+</span></div>
+      <div class="fa">Célibataires, hommes en couple qui veulent raviver l'attraction, hommes qui veulent récupérer leur ex. Ce qui change c'est la façon d'aborder la situation — et c'est exactement ce qu'on va travailler ensemble selon ta situation précise.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CALENDLY -->
+<section class="calendly-section" id="calendly">
+  <div class="calendly-inner">
+    <span class="lbl tc" style="text-align:center;display:block;margin-bottom:12px">Réserve ta session</span>
+    <h2 class="tc" style="margin-bottom:14px">Choisis ton créneau<br><em>et transforme ta vie amoureuse.</em></h2>
+    <p class="tc sub">45 minutes · 80€ · Plan d'action concret garanti</p>
+    <div class="calendly-inline-widget" data-url="https://calendly.com/lesambitieuxacomplis/appel-clarete" style="min-width:320px;height:700px;"></div>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  </div>
+</section>
+
+<!-- URGENCY -->
+<section class="urg">
+  <h2>Les places sont<br><em>limitées.</em></h2>
+  <p>Je travaille avec peu de clients à la fois pour garantir des résultats. Quand mon agenda est plein — c'est plein.</p>
+  <a href="#calendly" class="btn btn-light">Réserver ma session maintenant →</a>
+</section>
+
+<footer>
+  <p>© 2026 Sam David Coaching · Tous droits réservés · Les résultats présentés sont réels mais non garantis.</p>
+  <p style="margin-top:8px"><a href="#" style="color:var(--text-light);text-decoration:none">Mentions légales</a> · <a href="mailto:contact@lesambitieuxaccomplis.com" style="color:var(--text-light);text-decoration:none">contact@lesambitieuxaccomplis.com</a></p>
+</footer>
+
+<div class="sticky" id="sticky">
+  <p><strong>Session coaching</strong> — 80€ · 45 min · Plan d'action garanti</p>
+  <a href="#calendly" class="stn">Réserver maintenant →</a>
+</div>
+
+<script>
+document.querySelectorAll('.fi').forEach(item=>{
+  item.querySelector('.fq').addEventListener('click',()=>item.classList.toggle('open'));
+});
+const sticky=document.getElementById('sticky');
+window.addEventListener('scroll',()=>{
+  sticky.classList.toggle('show',window.scrollY>700);
+});
+</script>
+</body>
+</html>
